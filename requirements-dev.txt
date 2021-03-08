@@ -15,4 +15,8 @@ pyparsing==2.4.7
 pytest==6.2.2
 toml==0.10.2
 
+#Coverage
+coverage==5.5
+pytest==cov-2.11.1
+
 -r requirements.txt
