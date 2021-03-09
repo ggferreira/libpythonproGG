@@ -3,7 +3,7 @@ from time import sleep
 
 class Sessao:
     contador = 0
-    usuarios=[]
+    usuarios = []
 
     def salvar(self, usuario):
         Sessao.contador += 1

@@ -42,7 +42,6 @@ def test_qtd_de_spam(sessao, usuarios):
     assert len(usuarios) == enviador.qtd_emails_enviador
 
 
-
 def test_parametros_de_spam(sessao):
     usuario = Usuario(nome='Gabriel', email='gabriel@ferreira.com')
     sessao.salvar(usuario)
