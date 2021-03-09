@@ -6,24 +6,23 @@ from libpythonproGG import github_api
 
 
 @pytest.fixture
-def avatar_url():
+def avatar_url(mocker):
     resp_mock = Mock()
-    url = 'https://avatars.githubusercontent.com/u/2669?v=4'
+    url = 'https://avatars3.githubusercontent.com/u/402714?v=4'
     resp_mock.json.return_value = {
-        'login': 'gabriel', 'id': 2669,
+        'login': 'renzo', 'id': 402714,
         'avatar_url': url,
     }
-    get_original = github_api.requests.get
-    github_api.requests.get = Mock(return_value=resp_mock)
-    yield url
-    github_api.requests.get = get_original
+    get_mock = mocker.patch('libpythonproGG.github_api.requests.get')
+    get_mock.return_value = resp_mock
+    return url
 
 
 def test_buscar_avatar(avatar_url):
-    url = github_api.buscar_avatar('gabriel')
+    url = github_api.buscar_avatar('renzo')
     assert avatar_url == url
 
 
 def test_buscar_avatar_integracao():
-    url = github_api.buscar_avatar('gabriel')
-    assert 'https://avatars.githubusercontent.com/u/2669?v=4' == url
+    url = github_api.buscar_avatar('ggferreira')
+    assert 'https://avatars.githubusercontent.com/u/78044556?v=4' == url
